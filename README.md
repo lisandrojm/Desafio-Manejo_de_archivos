@@ -1,1 +1,3 @@
-# Desafio-Manejo_de_archivos
+# ProductManager
+
+Coderhouse/Backend/Desafío Entregable/Manejo de archivos en JavaScript
