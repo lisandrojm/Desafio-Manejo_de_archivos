@@ -3,16 +3,33 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 /* Comentarios */
+// /* JSDoc */ = jsdoc.app
 // /* CMT */ = Comentario
 
 ////////////////////////////////////////////////////////////////////////////////
 
+/* JSDoc */
+/**
+ * Se requiere el módulo 'fs', asignándoselo a la variable fs, lo que permite utilizar
+ sus métodos para leer y escribir archivos. 
+ * @type {import('fs')}
+ * @memberof fs
+ */
 const fs = require('fs');
 
+/* JSDoc */
+/**
+ * Clase para gestionar productos.
+ */
 /* CMT */
 /*  Se utiliza la clase ProductManager para leer y escribir datos desde y hacia 
 un archivo */
 class ProductManager {
+  /* JSDoc */
+  /**
+   * Crea una instancia de ProductManager.
+   * @param {string} path - Ruta del archivo de productos.
+   */
   /* CMT */
   /*  El constructor acepta el parámetro 'path', que representa la ruta del archivo
   donde se almacenarán los datos de los productos. */
@@ -25,6 +42,18 @@ class ProductManager {
     this.path = path;
   }
 
+  /* JSDoc */
+  /**
+   * Agrega un producto.
+   * @param {Object} product - Datos del producto.
+   * @property {number} product.id - ID del producto.
+   * @property {string} product.title - Título del producto.
+   * @property {string} product.description - Descripción del producto.
+   * @property {number} product.price - Precio del producto.
+   * @property {string} product.thumbnail - URL de la imagen del producto.
+   * @property {string} product.code - Código del producto.
+   * @property {number} product.stock - Stock del producto.
+   */
   /* CMT */
   /* addProduct de la clase ProductManager se encarga de agregar un nuevo producto a la
   lista de productos existentes. */
@@ -65,6 +94,11 @@ class ProductManager {
     this.saveProducts(products);
   }
 
+  /* JSDoc */
+  /**
+   * Obtiene la lista de productos.
+   * @returns {Array} - Lista de productos.
+   */
   /* CMT */
   /* El método getProducts de la clase ProductManager se encarga de obtener la lista de productos
   desde el archivo de datos*/
@@ -77,7 +111,17 @@ class ProductManager {
     como texto */
     /* El resultado de la lectura del archivo se almacena en la constante 'data' */
     try {
+      /* JSDoc */
+      /**
+       * Contenido del archivo de productos.
+       * @type {string}
+       */
       const data = fs.readFileSync(this.path, 'utf-8');
+      /* JSDoc */
+      /**
+       * Lista de productos.
+       * @type {Array}
+       */
       /* CMT */
       /* Se utiliza 'JSON.parse(data)' para convertir el contenido leído del archivo en un objeto 
       JavasCript.El resultado de esta operación se devuelve como resultado del método  */
@@ -90,6 +134,19 @@ class ProductManager {
     }
   }
 
+  /* JSDoc */
+  /**
+   * Obtiene un producto por su ID.
+   * @param {number} id - ID del producto.
+   * @returns {Object|null} - Producto encontrado o null si no se encuentra.
+   * @property {number} id - ID del producto.
+   * @property {string} title - Título del producto.
+   * @property {string} description - Descripción del producto.
+   * @property {number} price - Precio del producto.
+   * @property {string} thumbnail - URL de la imagen del producto.
+   * @property {string} code - Código del producto.
+   * @property {number} stock - Stock del producto.
+   */
   getProductById(id) {
     /* CMT */
     /* Se obtiene la lista de productos existentes llamando al método getProducts(), que lee la lista de
@@ -104,6 +161,13 @@ class ProductManager {
     return products.find((product) => product.id === id) || null;
   }
 
+  /* JSDoc */
+  /**
+   * Actualiza un producto.
+   * @param {number} id - ID del producto a actualizar.
+   * @param {Object} updatedFields - Campos actualizados del producto.
+   * @throws {Error} - Error si no se encuentra el producto.
+   */
   /* CMT */
   /* La función 'updateProduct' recibe un 'id' y los 'updateFields' para actualizar un producto */
   updateProduct(id, updatedFields) {
@@ -134,6 +198,12 @@ class ProductManager {
     }
   }
 
+  /* JSDoc */
+  /**
+   * Elimina un producto.
+   * @param {number} id - ID del producto a eliminar.
+   * @throws {Error} - Error si no se encuentra el producto.
+   */
   deleteProduct(id) {
     /* CMT */
     /* Se obtiene la lista de productos actualizada llamando al método 'getProducts' que lee y devuelve los
@@ -159,20 +229,42 @@ class ProductManager {
     }
   }
 
+  /* JSDoc */
+  /**
+   * Obtiene un nuevo ID para un producto.
+   * @param {Array} products - Lista de productos.
+   * @returns {number} - Nuevo ID.
+   */
+
   /* CMT */
   /*La función 'getNewId(products)' recibe una lista de productos y devuelve un nuevo ID para un producto.
   Luego, se le suma 1 para obtener un nuevo ID único. Si la lista de productos está vacía, devuelve 1 como ID inicial.  */
   getNewId(products) {
+    /* JSDoc */
+    /**
+     * Lista de IDs de productos existentes.
+     * @type {Array}
+     */
     /* CMT */
     /* Verifica si la lista de productos no está vacía */
     const productIds = products.map((product) => product.id);
 
+    /* JSDoc */
+    /**
+     * Nuevo ID generado para el producto.
+     * @type {number}
+     */
     /* CMT */
     /* Si no está vacía, utiliza el método Math.max(...products.map((product) => product.id)) para obtener el ID más alto de la lista de productos. */
     /* Luego, se le suma 1 para obtener un nuevo ID único. Si la lista de productos está vacía, devuelve 1 como ID inicial.   */
     return productIds.length > 0 ? Math.max(...productIds) + 1 : 1;
   }
 
+  /* JSDoc */
+  /**
+   * Guarda la lista de productos en el archivo.
+   * @param {Array} products - Lista de productos a guardar.
+   */
   /* CMT */
   /*La función 'saveProducts(products)'recibe una lista de productos y guarda los productos en un archivo. 
   Utiliza el método fs.writeFileSync para escribir la lista de productos en el archivo especificado por this.path. Los productos se guardan en formato JSON con una estructura legible y tabulada. */
