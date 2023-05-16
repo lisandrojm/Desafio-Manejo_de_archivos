@@ -307,7 +307,7 @@ if (product) {
 } else {
   console.log(`Producto con ID ${productId} no encontrado.`);
 }
-console.log('↑ /* Se obtuvo un producto por ID. Puede devolver "Producto encontrado" o "Producto con ID ${productId} no encontrado" según corresponda */');
+console.log('↑ /* Se obtuvo un producto por ID. Puede devolver "Producto encontrado, product" o "Producto con ID ${productId} no encontrado" según corresponda */');
 
 // Actualizar un producto
 const updatedFields = {
