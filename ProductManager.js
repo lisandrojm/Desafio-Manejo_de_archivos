@@ -281,7 +281,7 @@ console.log('→ /* Se creó una instancia de la clase ProductManager */');
 
 // Obtener los productos (debería devolver un arreglo vacío [])
 console.log(productManager.getProducts());
-console.log('→ /* Se obtuvieron los productos con "console.log(productManager.getProducts())" que devolvió un array vacío */');
+console.log('↑ /* Se obtuvieron los productos con "console.log(productManager.getProducts())" que devolvió un array vacío */');
 
 // Agregar un producto
 productManager.addProduct({
@@ -319,7 +319,7 @@ console.log('→ /* Se actualizó un producto"price:250""stock:20" */');
 
 // Obtener los productos después de la actualización
 console.log(productManager.getProducts());
-console.log('↑ /* Producto después de la actualización con "price:250""stock:20" */');
+console.log('↑ /* Producto después de la actualización con "price:250""stock:20" conservando su "id" */');
 
 // Eliminar un producto
 productManager.deleteProduct(productId);
