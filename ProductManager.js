@@ -59,7 +59,7 @@ class ProductManager {
   lista de productos existentes. */
   addProduct(product) {
     /* CMT */
-    /* Se declara una constante products y la inicializa con el valor devuelto por el método
+    /* Se declara una constante products y se inicializa con el valor devuelto por el método
     getProducts(). Este método se utiliza para obtener la lista actual de productos desde
     el archivo de datos */
     const products = this.getProducts();
@@ -69,7 +69,7 @@ class ProductManager {
     agregar.*/
     const newProduct = {
       /* CMT */
-      /*  Se asignan los valores de las propiedades title, description, price thumbnail, code
+      /*  Se asignan los valores de las propiedades title, description, price, thumbnail, code
       y stock del objeto product pasado como argumento del método */
       /* La propiedad 'id' se establece llamando al método 'getNewId', que genera un nuevo
       ID para el producto basado en la lista de productos existentes. */
@@ -103,18 +103,18 @@ class ProductManager {
   desde el archivo de datos*/
   /* try-catch, que se utilizará para manejar posibles errores durante la lectura del archivo. */
   getProducts() {
-    /* CMT */
-    /* Dentro del bloque 'try', se utiliza el método 'readFileSync' del módulo 'fs' para leer de 
-    forma síncrona el contenido del archivo ubicado en la ruta 'this.path'.*/
-    /* Se especifica la codificación 'utf-8' para asegurar que los datos se interpreten correctamente
-    como texto */
-    /* El resultado de la lectura del archivo se almacena en la constante 'data' */
     try {
       /* JSDoc */
       /**
        * Contenido del archivo de productos.
        * @type {string}
        */
+      /* CMT */
+      /* Dentro del bloque 'try', se utiliza el método 'readFileSync' del módulo 'fs' para leer de 
+      forma síncrona el contenido del archivo ubicado en la ruta 'this.path'.*/
+      /* Se especifica la codificación 'utf-8' para asegurar que los datos se interpreten correctamente
+      como texto */
+      /* El resultado de la lectura del archivo se almacena en la constante 'data' */
       const data = fs.readFileSync(this.path, 'utf-8');
       /* JSDoc */
       /**
@@ -155,7 +155,7 @@ class ProductManager {
     /* Se utiliza el método find en la lista de productos para buscar un producto cuya propiedad id sea
     igual al valor del parámetro id pasado al método. */
     /* Si se encuentra un producto con el ID especificado, se devuelve como resultado de la función. */
-    /* Si no se encuentra ningún producto con el ID especificado, la expresión || null se utiliza 
+    /* Si no se encuentra ningún producto con el ID especificado,se devuelve la expresión || null que se utiliza 
     para devolver null como resultado, asegurando que el método siempre devuelva un valor válido. */
     return products.find((product) => product.id === id) || null;
   }
