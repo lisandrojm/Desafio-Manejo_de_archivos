@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-/* DESAFÍO ENTREGABLE */
+/* DESAFÍO ENTREGABLE - Manejo de archivos */
 
 ////////////////////////////////////////////////////////////////////////////////
 /* Comentarios */
@@ -193,7 +193,7 @@ class ProductManager {
       /* Si no se encuentra el producto (índice igual a -1), se lanza un error indicando que el producto con
       el ID especificado no fue encontrado. */
     } else {
-      throw new Error(`Product with id ${id} not found.`);
+      throw new Error(`Producto con id ${id} no encontrado.`);
     }
   }
 
@@ -224,7 +224,7 @@ class ProductManager {
       /* Si no se encuentra el producto (índice igual a -1), se lanza un error indicando que el producto con
       el ID especificado no fue encontrado. */
     } else {
-      throw new Error(`Product with id ${id} not found.`);
+      throw new Error(`Producto con id ${id} no encontrado.`);
     }
   }
 
@@ -273,17 +273,23 @@ class ProductManager {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-/* Testing */
+/*PROCESO DE TESTING - Manejo de archivos */
 
-// Crear una instancia de la clase 'ProductManager'
+/* Se creará una instancia de la clase “ProductManager” */
 const productManager = new ProductManager('productos.json');
 console.log('→ /* Se creó una instancia de la clase ProductManager */');
 
-// Obtener los productos (debería devolver un arreglo vacío [])
+/* Se llamará “getProducts” recién creada la instancia, debe devolver un arreglo vacío [] */
 console.log(productManager.getProducts());
 console.log('↑ /* Se obtuvieron los productos con "console.log(productManager.getProducts())" que devolvió un array vacío */');
 
-// Agregar un producto
+/* Se llamará al método “addProduct” con los campos:
+title: “producto prueba”
+description:”Este es un producto prueba”
+price:200,
+thumbnail:”Sin imagen”
+code:”abc123”,
+stock:25 */
 productManager.addProduct({
   title: 'producto prueba',
   description: 'Este es un producto prueba',
@@ -292,13 +298,15 @@ productManager.addProduct({
   code: 'abc123',
   stock: 25,
 });
+
+/* El objeto debe agregarse satisfactoriamente con un id generado automáticamente SIN REPETIRSE*/
 console.log('→ /* Se agregó un producto */');
 
-// Obtener los productos nuevamente (debería aparecer el producto recién agregado)
+/* Se llamará el método “getProducts” nuevamente, esta vez debe aparecer el producto recién agregado */
 console.log(productManager.getProducts());
 console.log('↑ /* Se obtuvieron los productos nuevamente con "console.log(productManager.getProducts())" y ahora aparece el producto recién agregado */');
 
-// Obtener un producto por ID
+/* Se llamará al método “getProductById” y se corroborará que devuelva el producto con el id especificado, en caso de no existir, debe arrojar un error. */
 const productId = 1; // ID del producto agregado automáticamente
 const product = productManager.getProductById(productId);
 if (product) {
@@ -308,24 +316,23 @@ if (product) {
 }
 console.log('↑ /* Se obtuvo un producto por ID. Puede devolver "Producto encontrado, product" o "Producto con ID ${productId} no encontrado" según corresponda */');
 
-// Actualizar un producto
+/* Se llamará al método “updateProduct” y se intentará cambiar un campo de algún producto. */
 const updatedFields = {
   price: 250,
   stock: 20,
 };
 productManager.updateProduct(productId, updatedFields);
-
 console.log('→ /* Se actualizó un producto"price:250""stock:20" */');
 
-// Obtener los productos después de la actualización
+/* Se evaluará que en el llamado al método "updateProduct" no se elimine el id y que se haya hecho la actualización. */
 console.log(productManager.getProducts());
 console.log('↑ /* Producto después de la actualización con "price:250""stock:20" conservando su "id" */');
 
-// Eliminar un producto
-productManager.deleteProduct(productId);
+/* Se llamará al método “deleteProduct”, se evaluará que realmente se elimine el producto o que arroje un error en caso de no existir. */
+productManager.deleteProduct(2);
 console.log('→ /* Se eliminó el producto */ ');
 
-// Obtener los productos después de la eliminación
+/* Se obtendrán los productos después de la eliminación para confirmar que se haya eliminado */
 console.log(productManager.getProducts());
 
 console.log('↑ /* Se vuelven a obtener los productos con "console.log(productManager.getProducts())" y vuelve a devolver un array vacío confirmando que los productos fueron eliminados */');
