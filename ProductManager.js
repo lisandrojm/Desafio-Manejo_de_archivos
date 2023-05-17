@@ -329,7 +329,7 @@ console.log(productManager.getProducts());
 console.log('↑ /* Producto después de la actualización con "price:250""stock:20" conservando su "id" */');
 
 /* Se llamará al método “deleteProduct”, se evaluará que realmente se elimine el producto o que arroje un error en caso de no existir. */
-productManager.deleteProduct(2);
+productManager.deleteProduct(productId);
 console.log('→ /* Se eliminó el producto */ ');
 
 /* Se obtendrán los productos después de la eliminación para confirmar que se haya eliminado */
