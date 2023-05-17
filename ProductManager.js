@@ -65,7 +65,6 @@ class ProductManager {
     const products = this.getProducts();
 
     /* CMT */
-    /* Se declara una constante products y la inicializa con el valor devuelto por el método
     /* Se crea un nuevo objeto newProduct que contiene los datos del producto que se va a 
     agregar.*/
     const newProduct = {
